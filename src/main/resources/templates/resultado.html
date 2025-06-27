@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado - Triángulo Equilátero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .result {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔺 Resultado del Cálculo</h1>
+        
+        <div class="result">
+            <h3>Datos del Triángulo:</h3>
+            <p><strong>Base:</strong> <span th:text="${base}"></span> unidades</p>
+            <p><strong>Altura:</strong> <span th:text="${altura}"></span> unidades</p>
+            
+            <h3>Resultados:</h3>
+            <p><strong>Área:</strong> <span th:text="${area}"></span> unidades²</p>
+            <p><strong>Perímetro:</strong> <span th:text="${perimetro}"></span> unidades</p>
+        </div>
+        
+        <a href="/" class="btn">🔙 Realizar otro cálculo</a>
+    </div>
+</body>
+</html>

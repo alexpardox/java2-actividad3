@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Triángulo Equilátero - Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .ultimo-calculo {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #007bff;
+        }
+        .saludo {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔺 Calculadora de Triángulo</h1>
+        
+        <h2 class="saludo" th:if="${nombreUsuario != null}">
+            Hola, <span th:text="${nombreUsuario}">usuario</span> 👋
+        </h2>
+
+        <form th:if="${preguntarNombre == true}" action="/calcular" method="post">
+            <div class="form-group">
+                <label>¿Cuál es tu nombre?</label>
+                <input type="text" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Base (unidades):</label>
+                <input type="number" step="any" name="base" required>
+            </div>
+            <div class="form-group">
+                <label>Altura (unidades):</label>
+                <input type="number" step="any" name="altura" required>
+            </div>
+            <button type="submit">Calcular</button>
+        </form>
+
+        <form th:if="${preguntarNombre == false}" action="/calcular" method="post">
+            <div class="form-group">
+                <label>Base (unidades):</label>
+                <input type="number" step="any" name="base" required>
+            </div>
+            <div class="form-group">
+                <label>Altura (unidades):</label>
+                <input type="number" step="any" name="altura" required>
+            </div>
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div class="ultimo-calculo" th:if="${ultimoCalculo}">
+            <h3>📊 Último cálculo guardado:</h3>
+            <p><strong>Base:</strong> <span th:text="${base}"></span> unidades</p>
+            <p><strong>Altura:</strong> <span th:text="${altura}"></span> unidades</p>
+            <p><strong>Área:</strong> <span th:text="${area}"></span> unidades²</p>
+            <p><strong>Perímetro:</strong> <span th:text="${perimetro}"></span> unidades</p>
+        </div>
+    </div>
+</body>
+</html>
